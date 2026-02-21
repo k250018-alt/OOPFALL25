@@ -1,0 +1,144 @@
+1️⃣ engine.h
+🔹 Class: Engine
+🔸 Concept: Composition + Const Data Members
+    Data Members:
+        const string fuelType
+        const string cylinderConfiguration
+        const int numberOfCylinders
+        const string ignitionType
+    Member Functions:
+        Engine(...) (initializer list required)
+        void display() const
+    OOP Concepts:
+        ✔ Composition (used inside Car & Bike)
+        ✔ Const data members
+        ✔ Const member function
+
+2️⃣ vehicle.h
+🔹 Abstract Base Class: Vehicle
+🔸 Concept: Abstraction + Inheritance + Polymorphism + Static
+    Data Members:
+        string model
+        string color
+        bool isUsed
+        const int vehicleID ✅ (const data member)
+        static int totalVehicles ✅ (static data member)
+    Member Functions:
+        Vehicle(...)
+        virtual void display() const = 0; ✅ (pure virtual → abstraction)
+        int getID() const
+        static int getTotalVehicles() ✅
+        virtual ~Vehicle()
+    OOP Concepts:
+        ✔ Abstraction (pure virtual function)
+        ✔ Polymorphism
+        ✔ Static variable
+        ✔ Const data member
+
+3️⃣ car.h
+🔹 Class: Car : public Vehicle
+🔸 Concept: Inheritance + Composition
+    Data Members:
+        Engine engine ✅ (composition)
+        static int totalCars ✅ (static data member)
+    Member Functions:
+        Car(...)
+        void display() const override
+        static int getTotalCars()
+    OOP Concepts:
+        ✔ Inheritance
+        ✔ Composition
+        ✔ Polymorphism
+        ✔ Static member
+
+4️⃣ bike.h
+🔹 Class: Bike : public Vehicle
+🔸 Concept: Inheritance + Composition
+    Data Members:
+        Engine engine ✅
+        double price
+        static int totalBikes ✅
+    Member Functions:
+        Bike(...)
+        void display() const override
+        static int getTotalBikes()
+    OOP Concepts:
+        ✔ Inheritance
+        ✔ Composition
+        ✔ Polymorphism
+        ✔ Static member
+
+5️⃣ inventory.h
+🔹 Class: Inventory
+🔸 Concept: Abstraction + Aggregation + Dynamic Allocation
+    Data Members:
+        Vehicle** vehicles ✅ (dynamic array)
+        const int capacity ✅ (const data member)
+        int count
+        static int totalInventories ✅
+    Constructor:
+        Allocates dynamic array
+        vehicles = new Vehicle*[capacity];
+    Destructor:
+        Deletes each vehicle
+        Deletes array
+    Member Functions:
+        void addVehicle(Vehicle* v)
+        void removeVehicle(int index)
+        void displayInventory() const
+            Inside displayInventory():
+                const Vehicle* const ptr = vehicles[i];
+                ptr->display();
+        static int getTotalInventories()
+    OOP Concepts:
+        ✔ Aggregation (stores Vehicle pointers)
+        ✔ Dynamic allocation
+        ✔ Const pointer
+        ✔ Static member
+        ✔ Polymorphism
+
+6️⃣ user.h
+🔹 Class: User
+🔸 Concept: Aggregation + Const Safety + Static
+    Data Members:
+        string username
+        static int totalUsers ✅
+    Member Functions:
+        User(string name)
+        void buyVehicle(const Vehicle* v) ✅ (pointer to const)
+        void sellVehicle(Vehicle* v)
+        static int getTotalUsers()
+    OOP Concepts:
+        ✔ Aggregation
+        ✔ Const pointer parameter
+        ✔ Static variable
+
+7️⃣ admin.h
+🔹 Class: Admin
+🔸 Concept: Static + Aggregation
+    Data Members:
+        static string adminPassword ✅
+    Member Functions:
+        static bool login(string pass) ✅
+        void addVehicle(Inventory& inv, Vehicle* v)
+        void deleteVehicle(Inventory& inv, int index)
+    OOP Concepts:
+        ✔ Static data member
+        ✔ Static function
+        ✔ Aggregation
+
+8️⃣ mainmenu.h
+🔹 Class: MainMenu
+    Member Functions:
+        void showMenu()
+        void loginSystem()
+    Concept:
+        ✔ Abstraction (controls program flow)
+
+9️⃣ main.cpp
+    Responsibilities:
+        Create Inventory object
+        Create Car & Bike dynamically
+        Store them in inventory
+        Use Vehicle* array (polymorphism)
+        Call Admin/User functions
