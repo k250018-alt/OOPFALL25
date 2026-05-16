@@ -108,7 +108,7 @@ void addCar(const Car& car) {
 
 
 
-![PakWheels Search Filter Sidebar](<img width="199" height="240" alt="image" src="https://github.com/user-attachments/assets/6c95f9d2-973f-4c07-98d9-4262e83d4c86" />
+![PakWheels Search Filter Sidebar](web_screenshots/filter.png
 )
 
 > **PakWheels live filter data (Feb 2025):**
@@ -181,9 +181,9 @@ bool isInMileageRange(int lo, int hi)     const { return mileage >= lo && mileag
 ### 🌐 PakWheels Screenshot
 
 
-![PakWheels Sell Car Page](<img width="861" height="547" alt="image" src="https://github.com/user-attachments/assets/5c8404c6-ab18-4be0-b5f1-b2aa4fa8b8b1" />
+![PakWheels Sell Car Page](web_screenshots/seller_pov.png
 )
-![PakWheels Buyer View](<img width="1236" height="531" alt="image" src="https://github.com/user-attachments/assets/5b166e70-79c8-4756-a8c0-7ebed7a79460" />
+![PakWheels Buyer View](web_screenshots/buyer_pov.png
 )
 
 ---
@@ -252,7 +252,7 @@ Listing* MainMenu::submitCarListing(Seller& seller, const Car& car) {
 ### 🌐 PakWheels Screenshot
 
 
-![PakWheels Send Message Button](<img width="324" height="271" alt="image" src="https://github.com/user-attachments/assets/4bafb607-fa89-402c-b4e8-0659d9c7b34a" />
+![PakWheels Send Message Button](web_screenshots/send_message.png
 )
 
 > PakWheels pre-fills the message with: *"Is this still available?"*
@@ -324,7 +324,7 @@ seller.sendMessage(buyer.getName(),
 ### 🌐 PakWheels Screenshot
 
 
-![PakWheels Favourites Heart Icon](<img width="351" height="215" alt="image" src="https://github.com/user-attachments/assets/e1271f97-9f59-4ccb-ba94-4b2c1f875d65" />
+![PakWheels Favourites Heart Icon](web_screenshots/favorites.png
 )
 
 > **From PakWheels App Store listing:**
@@ -389,7 +389,7 @@ buyer.isFavorite(101);      // mirrors filled vs empty heart icon
 
 ### 🌐 PakWheels Screenshot
 
-![PakWheels Ad Review Process](<img width="1138" height="416" alt="image" src="https://github.com/user-attachments/assets/95f0b205-b7a9-49a1-8129-c5548f6acd5b" />
+![PakWheels Ad Review Process](web_screenshots/verification.png
 )
 
 > **From PakWheels official documentation:**
