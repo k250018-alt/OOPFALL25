@@ -38,7 +38,7 @@ buyers browse and purchase vehicles, and admins moderate all listings.
 ### 🌐 PakWheels Screenshot
 
 
-![PakWheels Used Cars Listings](web screenshots/listing.png)
+![PakWheels Used Cars Listings]([web screenshots/listing.png](https://github.com/k250018-alt/OOPFALL25/blob/9c958ca7a68c12f2053e5e2a3b39e29e042a56fc/oop%20assignment/assignment%201/web%20screenshots/listing.png))
 
 > **What PakWheels shows on each listing card:**
 > Make · Model · Year · Price (PKR) · Mileage (km) · Engine CC · Fuel Type · Transmission · City · Condition (New/Used)
