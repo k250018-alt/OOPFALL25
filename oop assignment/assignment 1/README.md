@@ -3,7 +3,7 @@
 
 ---
 
-## 📁 Repository Structure
+##  Repository Structure
 
 ```
 A2-[StudentID]/
@@ -14,14 +14,14 @@ A2-[StudentID]/
 
 ---
 
-## 🌐 Website Replicated: [PakWheels.com](https://www.pakwheels.com)
+##  Website Replicated: [PakWheels.com](https://www.pakwheels.com)
 
 PakWheels is Pakistan's #1 automobile marketplace where sellers post vehicle ads,
 buyers browse and purchase vehicles, and admins moderate all listings.
 
 ---
 
-## 📌 Table of Contents
+##  Table of Contents
 
 1. [Vehicle Listings / Inventory](#1-vehicle-listings--inventory)
 2. [Search & Filter System](#2-search--filter-system)
@@ -35,7 +35,7 @@ buyers browse and purchase vehicles, and admins moderate all listings.
 
 ## 1. Vehicle Listings / Inventory
 
-### 🌐 PakWheels Screenshot
+###  PakWheels Screenshot
 
 
 ![PakWheels Used Cars Listings](web_screenshots/listing.png)
@@ -45,7 +45,7 @@ buyers browse and purchase vehicles, and admins moderate all listings.
 
 ---
 
-### 💻 Code Snippet — Vehicle & Inventory Classes
+###  Code Snippet — Vehicle & Inventory Classes
 
 The four inventory tabs on PakWheels (Used Cars, New Cars, Used Bikes, New Bikes)
 are replicated using four inventory objects inside `MainMenu`:
@@ -94,7 +94,7 @@ void addCar(const Car& car) {
 
 ---
 
-### 🧠 Reasoning
+###  Reasoning
 
 - **Four separate inventory objects** mirror PakWheels' four distinct tabs. A condition check (`car.getIsUsed() != isUsed`) ensures a Used Car cannot be added to the New Cars inventory — replicating PakWheels' validation.
 - **Composition** is used because when a listing is deleted on PakWheels, the vehicle data disappears too. Our inventory uses `new Car(car)` and deletes in the destructor, modelling that same ownership.
@@ -104,7 +104,7 @@ void addCar(const Car& car) {
 
 ## 2. Search & Filter System
 
-### 🌐 PakWheels Screenshot
+###  PakWheels Screenshot
 
 
 
@@ -118,7 +118,7 @@ void addCar(const Car& car) {
 
 ---
 
-### 💻 Code Snippet — Filter Methods
+###  Code Snippet — Filter Methods
 
 ```cpp
 // Brand filter — mirrors PakWheels 'Make' sidebar
@@ -168,7 +168,7 @@ bool isInMileageRange(int lo, int hi)     const { return mileage >= lo && mileag
 
 ---
 
-### 🧠 Reasoning
+###  Reasoning
 
 - **Filter methods on the inventory class** match PakWheels' behaviour: filters operate at the results-list level, not on individual vehicles. The inventory iterates its collection and displays matches.
 - **Predicate helpers on Vehicle** (`matchesBrand`, `isInPriceRange`) follow the Single Responsibility Principle — the vehicle knows its own data; the inventory decides what to show.
@@ -178,7 +178,7 @@ bool isInMileageRange(int lo, int hi)     const { return mileage >= lo && mileag
 
 ## 3. User Roles — Admin, Seller, Buyer
 
-### 🌐 PakWheels Screenshot
+###  PakWheels Screenshot
 
 
 ![PakWheels Sell Car Page](web_screenshots/seller_pov.png
@@ -188,7 +188,7 @@ bool isInMileageRange(int lo, int hi)     const { return mileage >= lo && mileag
 
 ---
 
-### 💻 Code Snippet — Inheritance Hierarchy
+###  Code Snippet — Inheritance Hierarchy
 
 ```cpp
 class User {                          // Base — shared by all roles
@@ -239,7 +239,7 @@ Listing* MainMenu::submitCarListing(Seller& seller, const Car& car) {
 
 ---
 
-### 🧠 Reasoning
+###  Reasoning
 
 - **Inheritance over a role flag** — PakWheels has fundamentally different capabilities per role. A buyer cannot approve listings; a seller cannot inspect other sellers' cars. Inheritance enforces this at compile time — each subclass only exposes its own operations.
 - **`virtual displayProfile()`** — polymorphism ensures each role's profile page looks different, matching how PakWheels shows different dashboards per user type.
@@ -249,7 +249,7 @@ Listing* MainMenu::submitCarListing(Seller& seller, const Car& car) {
 
 ## 4. Messaging System
 
-### 🌐 PakWheels Screenshot
+###  PakWheels Screenshot
 
 
 ![PakWheels Send Message Button](web_screenshots/send_message.png
@@ -260,7 +260,7 @@ Listing* MainMenu::submitCarListing(Seller& seller, const Car& car) {
 
 ---
 
-### 💻 Code Snippet — Message & Inbox Classes
+###  Code Snippet — Message & Inbox Classes
 
 ```cpp
 class Message {
@@ -311,7 +311,7 @@ seller.sendMessage(buyer.getName(),
 
 ---
 
-### 🧠 Reasoning
+###  Reasoning
 
 - **`Inbox` as a composition member of `User`** — on PakWheels your inbox is permanently tied to your account. We model this as a value member `Inbox inbox` inside `User`. When the User is destroyed, the Inbox (and all its Messages) are destroyed too.
 - **`relatedVehicleID` inside Message** — PakWheels always shows which listing a message was sent from. Storing the vehicle ID lets the system filter messages by vehicle and display context.
@@ -321,7 +321,7 @@ seller.sendMessage(buyer.getName(),
 
 ## 5. Favourites / Saved Listings
 
-### 🌐 PakWheels Screenshot
+###  PakWheels Screenshot
 
 
 ![PakWheels Favourites Heart Icon](web_screenshots/favorites.png
@@ -333,7 +333,7 @@ seller.sendMessage(buyer.getName(),
 
 ---
 
-### 💻 Code Snippet — Favorites Class
+###  Code Snippet — Favorites Class
 
 ```cpp
 class Favorites {
@@ -377,7 +377,7 @@ buyer.isFavorite(101);      // mirrors filled vs empty heart icon
 
 ---
 
-### 🧠 Reasoning
+###  Reasoning
 
 - **Storing `int` IDs instead of `Vehicle*` pointers** — PakWheels favourites are references to listings, not copies. If the seller deletes the ad, the favourite reference still exists but the vehicle is gone. Storing IDs models this correctly: `findByID(savedID)` returns `nullptr` if removed — exactly how PakWheels behaves.
 - **`notifyOnPriceChange` flag** — PakWheels lets users "Create alerts and get notified" when prices change. This flag per-instance models that a buyer can toggle notifications for their saved list.
@@ -387,7 +387,7 @@ buyer.isFavorite(101);      // mirrors filled vs empty heart icon
 
 ## 6. Listing Approval Workflow
 
-### 🌐 PakWheels Screenshot
+###  PakWheels Screenshot
 
 ![PakWheels Ad Review Process](web_screenshots/verification.png
 )
@@ -397,7 +397,7 @@ buyer.isFavorite(101);      // mirrors filled vs empty heart icon
 
 ---
 
-### 💻 Code Snippet — Listing Class & Approval Workflow
+###  Code Snippet — Listing Class & Approval Workflow
 
 ```cpp
 enum class ListingStatus { PENDING, APPROVED, REJECTED };
@@ -463,7 +463,7 @@ public:
 
 ---
 
-### 🧠 Reasoning
+###  Reasoning
 
 - **`listingID` is `const int`** — PakWheels assigns a permanent AD ID that never changes even if rejected. `const int` set via `++listingCount` in the constructor enforces this — it cannot be modified after creation.
 - **`enum class ListingStatus`** — strongly-typed enum prevents invalid status values. A listing can only be PENDING, APPROVED, or REJECTED — no other state is possible.
@@ -488,7 +488,7 @@ public:
 
 ---
 
-## ⚙️ How to Compile & Run
+##  How to Compile & Run
 
 ```bash
 g++ -std=c++17 vehicle_marketplace.cpp -o vehicle_marketplace
